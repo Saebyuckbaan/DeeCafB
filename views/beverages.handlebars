@@ -110,40 +110,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <!-- Step Bar -->
-                                    <!--
-                                    <div class ="mt-element-step">
-                                        <div class ="row step-thin">
-                                            <div class="col-md-4 mt-step-col first done">
-                                                <div class="mt-step-number bg-white">1</div>
-                                                <div class="mt-step-title uppercase font-grey-cascade">Brand</div>
-                                                <div class="mt-step-content font-grey-cascade">Select the brand</div>
-                                            </div>
-                                            <div class="col-md-4 bg-grey mt-step-col done">
-                                                <div class="mt-step-number bg-white">2</div>
-                                                <div class="mt-step-title uppercase font-grey-cascade">Coffee</div>
-                                                <div class="mt-step-content font-grey-cascade">Select the Coffee</div>
-                                            </div>
-                                            <div class="col-md-4 bg-grey mt-step-col last">
-                                                <div class="mt-step-number bg-white">3</div>
-                                                <div class="mt-step-title uppercase font-grey-cascade">Size</div>
-                                                <div class="mt-step-content font-grey-cascade">Select the size</div>
-                                            </div>
-                                        </div>
-                                    </div>-->
+
                                     <h3 style="text-align: center;">Select the Drink</h3>
-                                    <!-- Slide Image-->
-                                    <div style ="padding-top: 10%">
-                                        <ul class="bxslider">
+
+                                    <!-- Option -->                                
+                                    <select id="beverage" class="form-control select2" >
+                                        <option>Select Beverage</option>
                                         {{#each beverages}}
-                                          <li class="beverage" id="{{name}}" name="type" data-cid="{{../selectedCid}}">
-                                              <div style="text-align: center;">{{name}}</div>
-                                              <img src="{{image}}" />
-                                          </li>
+                                        <option class="beverage" data-name="{{name}}" name="beverages" data-cid ="{{../selectedCid}}">{{name}}</option>
                                         {{/each}}
-                                        </ul>
-                                    </div>
-                                    <!-- end of slide -->
+                                    </select>
+                                    
+                                    </br>
+                                    </br>
+                                    <!-- End of Options -->
 
                                     <!-- Buttons -->
                                     <div class="row">

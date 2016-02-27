@@ -9,49 +9,54 @@ $(document).ready(function ( event ) {
 
   	});
 
+
 });
 
 // Company ( Brand ) selection is Step 1
-$(".company").click( function (event ) {
+$("#brands").on("change", function (event ) {
 	event.preventDefault();
 
 	//console.log(this.id);
-	companyID = this.id;
+	companyID = this.value;
+	//console.log( this + " / " + this.id + " / " + this.value);
+	
 	selectFromSwipeList ( event, "./types" + "?" + "cid=" + companyID);
 });
 
 // Type of Beverage selection is Step 2
-$(".type").click( function (event ) {
+$("#type").on( "change", function (event ) {
 	event.preventDefault();
-	beverageID = this.id;
-	companyID = $(this).data('cid');
+	console.log ( $(this).find(':selected').data("bid") + " and " + this.value);
+	beverageID = $(this).find(':selected').data("bid");
+	companyID = this.value;
+	//debugger;
 //	console.log($(this).data('cid'));
 	//beverageId = this.id;
 	selectFromSwipeList ( event, "./beverages" + "?" + "cid=" + companyID + "&bid=" + beverageID);
 });
 
 // Beverage Selection is Step 3
-$(".beverage").click( function (event ) { //future class for beverage.handlebars = .beverage
+$("#beverage").on( "change", function (event ) { //future class for beverage.handlebars = .beverage
 	event.preventDefault();
 	//console.log(this.id);
 
-	companyID = $(this).data('cid');
-	beverageName = this.id;
+	companyID = $(this).find(':selected').data('cid');
+	beverageName = $(this).find(':selected').data("name");
 	selectFromSwipeList ( event, "./sizes"+ "?" + "cid=" + companyID + "&name=" + beverageName);
 });
 
 //Size Selection is Step 4
-$(".size").click( function ( event ) { //future class for size.handlebars = .size
+$("#size").on( "change", function ( event ) { //future class for size.handlebars = .size
 	event.preventDefault();
 
 
 	// Create Caffeine intake information object
 	var caffeineObj;
-	var caffeineVal = $(this).val();
-	var companyID = $(this).data('cid');
-	var beverageID = $(this).data('bid');
-	var beverageName = $(this).data('name');
-	var size = $(this).data("size");
+	var caffeineVal = $(this).find(':selected').val();
+	var companyID = $(this).find(':selected').data('cid');
+	var beverageID = $(this).find(':selected').data('bid');
+	var beverageName = $(this).find(':selected').data('name');
+	var size = $(this).find(':selected').data("size");
 
 	var currentDate = new Date();
 	var mon = currentDate.getMonth()+1;
@@ -68,7 +73,7 @@ $(".size").click( function ( event ) { //future class for size.handlebars = .siz
 					"size": size,
 					"date" : dateString
 					};
-
+	
 	showExceedingWarning ( event, caffeineObj );
 
 });
